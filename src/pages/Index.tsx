@@ -1,12 +1,11 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
-import Header from '@src/components/Header';
-import UserForm from '@src/components/UserForm';
-import MovieList from '@src/components/MovieList';
-import LoadingSpinner from '@src/components/LoadingSpinner';
-import { getMovieRecommendations } from '@src/services/geminiService';
-import { Movie } from '@src/components/MovieCard';
+import Header from '@/components/Header';
+import UserForm from '@/components/UserForm';
+import MovieList from '@/components/MovieList';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import { getMovieRecommendations } from '@/services/geminiService';
+import { Movie } from '@/components/MovieCard';
 
 const Index = () => {
   const { toast } = useToast();
