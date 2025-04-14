@@ -91,15 +91,17 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         rating: "8.1/10",
         description: "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler with the help of a group of female prisoners and a drifter named Max.",
         whyUserMightLikeIt: `High-octane action sequences with minimal CGI and incredible stunt work make this a visual masterpiece. If you enjoy immersive action that keeps you on the edge of your seat, ${userName}, this is a must-watch!`,
-        platforms: ["Netflix", "HBO Max"]
+        platforms: ["Netflix", "HBO Max"],
+        logoUrl: "/movie-logos/mad-max-fury-road.jpg"
       },
       {
         title: "John Wick",
         year: "2014",
         rating: "7.4/10",
         description: "An ex-hitman comes out of retirement to track down the gangsters who killed his dog and took his car.",
-        whyUserMightLikeIt: `Keanu Reeves delivers a compelling performance in this stylish action thriller with brilliantly choreographed fight sequences. ${userName}, if you appreciate meticulous world-building and non-stop action, this film delivers.`,
-        platforms: ["Prime Video", "Hulu"]
+        whyUserMightLikeIt: `If you love stylish action with incredible fight choreography, ${userName}, John Wick's world-building and Keanu Reeves' performance will keep you hooked!`,
+        platforms: ["Amazon Prime", "Hulu"],
+        logoUrl: "/movie-logos/john-wick.jpg"
       },
       {
         title: "The Dark Knight",
@@ -108,14 +110,6 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
         whyUserMightLikeIt: `${userName}, this film redefines superhero movies with its complex characters, gritty realism, and Heath Ledger's unforgettable performance as the Joker.`,
         platforms: ["Netflix", "Prime Video"]
-      },
-      {
-        title: "Inception",
-        year: "2010",
-        rating: "8.8/10",
-        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-        whyUserMightLikeIt: `Christopher Nolan's mind-bending thriller combines stunning visuals with a complex, multi-layered plot. ${userName}, if you enjoy films that challenge your perception of reality, this is a must-see.`,
-        platforms: ["Hulu", "Disney+"]
       },
       {
         title: "Mission: Impossible - Fallout",
@@ -139,9 +133,10 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         title: "The Grand Budapest Hotel",
         year: "2014",
         rating: "8.1/10",
-        description: "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy under the hotel's eccentric concierge.",
-        whyUserMightLikeIt: `Wes Anderson's visually stunning comedy features a stellar ensemble cast and quirky humor. ${userName}, if you appreciate meticulous set design and whimsical storytelling, this film is a delight.`,
-        platforms: ["Disney+", "Prime Video"]
+        description: "The adventures of Gustave H, a legendary concierge at a famous European hotel between the wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend.",
+        whyUserMightLikeIt: `Wes Anderson's unique visual style and quirky humor make this a delightful watch. If you appreciate clever dialogue and eccentric characters, ${userName}, you'll love this!`,
+        platforms: ["Disney+", "HBO Max"],
+        logoUrl: "/movie-logos/grand-budapest-hotel.jpg"
       },
       {
         title: "21 Jump Street",
@@ -173,9 +168,10 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         title: "The Shawshank Redemption",
         year: "1994",
         rating: "9.3/10",
-        description: "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
-        whyUserMightLikeIt: `${userName}, this film's powerful storytelling about hope and perseverance resonates deeply with audiences. The emotional journey of Andy Dufresne is both heartbreaking and ultimately uplifting.`,
-        platforms: ["HBO Max", "Prime Video"]
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        whyUserMightLikeIt: `This timeless classic about hope and friendship will resonate with you, ${userName}. The powerful performances and emotional depth make it unforgettable.`,
+        platforms: ["Netflix"],
+        logoUrl: "/movie-logos/shawshank-redemption.jpg"
       },
       {
         title: "The Godfather",
@@ -250,6 +246,15 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         description: "In a dystopian future where women are infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea.",
         whyUserMightLikeIt: `Alfonso Cuarón's gritty and realistic sci-fi film is a chilling depiction of a world without hope. ${userName}, if you appreciate films that blend social commentary with intense action sequences, this is a must-watch.`,
         platforms: ["Peacock", "Hulu"]
+      },
+      {
+        title: "Inception",
+        year: "2010",
+        rating: "8.8/10",
+        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        whyUserMightLikeIt: `Christopher Nolan's mind-bending masterpiece will challenge your perception of reality. If you enjoy complex narratives and stunning visuals, ${userName}, this is perfect for you!`,
+        platforms: ["Netflix", "HBO Max"],
+        logoUrl: "/movie-logos/inception.jpg"
       }
     ],
     'Romance': [

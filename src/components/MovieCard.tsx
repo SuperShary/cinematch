@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Star, TrendingUp, Award, Play } from 'lucide-react';
 
@@ -9,6 +8,7 @@ export interface Movie {
   description: string;
   whyUserMightLikeIt: string;
   platforms?: string[]; // Add platforms property
+  logoUrl?: string; // Add logoUrl property
 }
 
 interface MovieCardProps {
@@ -16,11 +16,39 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+  const getPlatformUrl = (platform: string) => {
+    const platformUrls: { [key: string]: string } = {
+      'Netflix': 'https://www.netflix.com',
+      'HBO Max': 'https://www.max.com',
+      'Amazon Prime': 'https://www.primevideo.com',
+      'Hulu': 'https://www.hulu.com',
+      'Disney+': 'https://www.disneyplus.com',
+      'Peacock': 'https://www.peacocktv.com'
+    };
+    return platformUrls[platform] || '#';
+  };
+
+  const handleWatchNow = () => {
+    if (movie.platforms && movie.platforms.length > 0) {
+      // Open the first available platform in a new tab
+      window.open(getPlatformUrl(movie.platforms[0]), '_blank');
+    }
+  };
+
   return (
     <div className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_#9b87f5] transform hover:-translate-y-1 h-full flex flex-col">
       <div className="relative w-full">
-        {/* Movie image placeholder with gradient overlay */}
+        {/* Movie image with gradient overlay */}
         <div className="w-full h-48 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden">
+          {movie.logoUrl ? (
+            <img
+              src={movie.logoUrl}
+              alt={`${movie.title} logo`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-b from-gray-800 to-gray-900" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
             <h3 className="text-2xl font-bold text-white truncate pr-2">
@@ -44,12 +72,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
                 <span className="text-sm">Available on: </span>
                 <div className="ml-1 flex gap-1">
                   {movie.platforms.map((platform, index) => (
-                    <span 
-                      key={index} 
-                      className="text-xs font-medium px-2 py-0.5 rounded-full bg-neon-purple/20 text-neon-purple"
+                    <a
+                      key={index}
+                      href={getPlatformUrl(platform)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-medium px-2 py-0.5 rounded-full bg-neon-purple/20 text-neon-purple hover:bg-neon-purple/30 transition-colors"
                     >
                       {platform}
-                    </span>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -70,9 +101,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         </div>
 
         <div className="mt-3 pt-3 border-t border-gray-700">
-          <button className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white py-2 rounded-md transition-colors">
+          <button 
+            onClick={handleWatchNow}
+            className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white py-2 rounded-md transition-colors"
+            disabled={!movie.platforms || movie.platforms.length === 0}
+          >
             <Play className="h-4 w-4 mr-2" fill="currentColor" />
-            Watch Now
+            {movie.platforms && movie.platforms.length > 0 ? 'Watch Now' : 'Not Available'}
           </button>
         </div>
       </div>
