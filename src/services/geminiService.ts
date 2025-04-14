@@ -104,31 +104,25 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         logoUrl: "/movie-logos/john-wick.jpg"
       },
       {
+        title: "Mission: Impossible - Fallout",
+        year: "2018",
+        rating: "7.7/10",
+        description: "Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong.",
+        whyUserMightLikeIt: `Tom Cruise's death-defying stunts and the franchise's signature blend of action and espionage make this a thrilling watch, ${userName}!`,
+        platforms: ["Paramount+", "Amazon Prime"],
+        logoUrl: "/movie-logos/mission-impossible.jpg"
+      },
+      {
         title: "The Dark Knight",
         year: "2008",
         rating: "9.0/10",
         description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-        whyUserMightLikeIt: `${userName}, this film redefines superhero movies with its complex characters, gritty realism, and Heath Ledger's unforgettable performance as the Joker.`,
-        platforms: ["Netflix", "Prime Video"]
-      },
-      {
-        title: "Mission: Impossible - Fallout",
-        year: "2018",
-        rating: "7.8/10",
-        description: "Ethan Hunt and his IMF team must track down stolen plutonium while being monitored by a CIA agent after a mission gone wrong.",
-        whyUserMightLikeIt: `Tom Cruise delivers breathtaking stunts in this action-packed installment of the Mission: Impossible series. ${userName}, if you appreciate practical effects and relentless pacing, this film will keep you thoroughly entertained.`,
-        platforms: ["Amazon Prime", "HBO Max"]
+        whyUserMightLikeIt: `Heath Ledger's iconic performance as the Joker and Christopher Nolan's masterful direction make this a superhero film like no other, ${userName}!`,
+        platforms: ["HBO Max", "Netflix"],
+        logoUrl: "/movie-logos/the-dark-knight.jpg"
       }
     ],
     'Comedy': [
-      {
-        title: "Superbad",
-        year: "2007",
-        rating: "7.6/10",
-        description: "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
-        whyUserMightLikeIt: `${userName}, this coming-of-age comedy perfectly captures teenage awkwardness with hilarious performances from Jonah Hill and Michael Cera. Its authentic portrayal of friendship makes the outrageous humor even more impactful.`,
-        platforms: ["Netflix", "Hulu"]
-      },
       {
         title: "The Grand Budapest Hotel",
         year: "2014",
@@ -139,28 +133,13 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         logoUrl: "/movie-logos/grand-budapest-hotel.jpg"
       },
       {
-        title: "21 Jump Street",
-        year: "2012",
-        rating: "7.2/10",
-        description: "A pair of underachieving cops are sent back to high school to blend in and bring down a synthetic drug ring.",
-        whyUserMightLikeIt: `Channing Tatum and Jonah Hill's comedic chemistry shines in this hilarious action-comedy. ${userName}, if you enjoy self-aware humor and over-the-top action sequences, this film is a blast.`,
-        platforms: ["Netflix", "Starz"]
-      },
-      {
-        title: "Bridesmaids",
-        year: "2011",
-        rating: "6.8/10",
-        description: "Competition between the maid of honor and a bridesmaid threatens to upend the life of an out-of-work pastry chef.",
-        whyUserMightLikeIt: `Kristen Wiig leads a talented ensemble cast in this raunchy and heartfelt comedy. ${userName}, if you appreciate female-driven humor and relatable characters, this film is a must-watch.`,
-        platforms: ["Hulu", "Peacock"]
-      },
-      {
-        title: "This Is Spinal Tap",
-        year: "1984",
-        rating: "7.9/10",
-        description: "A mockumentary on a fictional heavy metal band, chronicling their disastrous U.S. tour.",
-        whyUserMightLikeIt: `This cult classic mockumentary is a hilarious send-up of rock documentaries. ${userName}, if you enjoy clever satire and quotable lines, this film is a comedic masterpiece.`,
-        platforms: ["HBO Max", "Criterion Channel"]
+        title: "Pulp Fiction",
+        year: "1994",
+        rating: "8.9/10",
+        description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        whyUserMightLikeIt: `Quentin Tarantino's non-linear storytelling and sharp dialogue make this a cult classic. ${userName}, if you enjoy dark humor and unforgettable characters, this is a must-watch!`,
+        platforms: ["Netflix", "HBO Max"],
+        logoUrl: "/movie-logos/pulp-fiction.jpg"
       }
     ],
     'Drama': [
@@ -174,79 +153,16 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         logoUrl: "/movie-logos/shawshank-redemption.jpg"
       },
       {
-        title: "The Godfather",
-        year: "1972",
-        rating: "9.2/10",
-        description: "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
-        whyUserMightLikeIt: `Francis Ford Coppola's epic crime drama is a cinematic masterpiece with unforgettable performances. ${userName}, if you appreciate complex characters and a gripping story, this film is essential viewing.`,
-        platforms: ["Paramount+", "Showtime"]
-      },
-      {
-        title: "Pulp Fiction",
-        year: "1994",
-        rating: "8.9/10",
-        description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-        whyUserMightLikeIt: `Quentin Tarantino's groundbreaking crime film is a stylish and endlessly quotable masterpiece. ${userName}, if you enjoy non-linear storytelling and sharp dialogue, this film is a must-see.`,
-        platforms: ["Netflix", "Hulu"]
-      },
-      {
-        title: "Schindler's List",
-        year: "1993",
-        rating: "8.9/10",
-        description: "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
-        whyUserMightLikeIt: `Steven Spielberg's powerful historical drama is a harrowing and unforgettable depiction of the Holocaust. ${userName}, this film's emotional impact and historical significance make it an essential viewing experience.`,
-        platforms: ["Peacock", "Prime Video"]
-      },
-      {
-        title: "Forrest Gump",
-        year: "1994",
-        rating: "8.8/10",
-        description: "Forrest Gump, a man with a low IQ, recounts the early years of his life, during which he found himself in the middle of key historical events.",
-        whyUserMightLikeIt: `Robert Zemeckis' heartwarming and nostalgic film is a celebration of life's unexpected journeys. ${userName}, if you appreciate feel-good stories and memorable characters, this film is a classic.`,
-        platforms: ["Hulu", "Paramount+"]
+        title: "Parasite",
+        year: "2019",
+        rating: "8.5/10",
+        description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+        whyUserMightLikeIt: `Bong Joon-ho's masterful blend of dark comedy and social commentary will keep you on the edge of your seat, ${userName}!`,
+        platforms: ["Hulu"],
+        logoUrl: "/movie-logos/parasite.jpg"
       }
     ],
     'Sci-Fi': [
-      {
-        title: "Blade Runner 2049",
-        year: "2017",
-        rating: "8.0/10",
-        description: "Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing for thirty years.",
-        whyUserMightLikeIt: `${userName}, this visually stunning sequel expands on the original's themes with breathtaking cinematography and a thought-provoking story about what it means to be human.`,
-        platforms: ["HBO Max", "Netflix"]
-      },
-      {
-        title: "Arrival",
-        year: "2016",
-        rating: "7.9/10",
-        description: "A linguist is recruited by the military to assist in translating alien communications.",
-        whyUserMightLikeIt: `Denis Villeneuve's thought-provoking sci-fi film explores themes of communication and understanding. ${userName}, if you appreciate films that challenge your perspective and offer a unique narrative, this is a must-see.`,
-        platforms: ["Paramount+", "Prime Video"]
-      },
-      {
-        title: "Interstellar",
-        year: "2014",
-        rating: "8.6/10",
-        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-        whyUserMightLikeIt: `Christopher Nolan's visually stunning sci-fi epic combines scientific concepts with emotional storytelling. ${userName}, if you enjoy films that explore the vastness of space and the depths of human connection, this is a must-watch.`,
-        platforms: ["Hulu", "Amazon Prime"]
-      },
-      {
-        title: "Gravity",
-        year: "2013",
-        rating: "7.7/10",
-        description: "Two astronauts work together to survive after an accident leaves them alone in space.",
-        whyUserMightLikeIt: `Alfonso Cuarón's visually stunning space thriller is a gripping and immersive experience. ${userName}, if you appreciate films that push the boundaries of visual effects and create intense suspense, this is a must-see.`,
-        platforms: ["HBO Max", "Netflix"]
-      },
-      {
-        title: "Children of Men",
-        year: "2006",
-        rating: "7.9/10",
-        description: "In a dystopian future where women are infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea.",
-        whyUserMightLikeIt: `Alfonso Cuarón's gritty and realistic sci-fi film is a chilling depiction of a world without hope. ${userName}, if you appreciate films that blend social commentary with intense action sequences, this is a must-watch.`,
-        platforms: ["Peacock", "Hulu"]
-      },
       {
         title: "Inception",
         year: "2010",
@@ -255,6 +171,15 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         whyUserMightLikeIt: `Christopher Nolan's mind-bending masterpiece will challenge your perception of reality. If you enjoy complex narratives and stunning visuals, ${userName}, this is perfect for you!`,
         platforms: ["Netflix", "HBO Max"],
         logoUrl: "/movie-logos/inception.jpg"
+      },
+      {
+        title: "Children of Men",
+        year: "2006",
+        rating: "7.9/10",
+        description: "In 2027, in a chaotic world in which women have somehow become infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea.",
+        whyUserMightLikeIt: `Alfonso Cuarón's gritty and realistic sci-fi film is a chilling depiction of a world without hope. ${userName}, if you appreciate films that blend social commentary with intense action sequences, this is a must-watch!`,
+        platforms: ["Peacock", "Hulu"],
+        logoUrl: "/movie-logos/children-of-men.jpg"
       }
     ],
     'Romance': [
@@ -300,22 +225,6 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
       }
     ],
     'Thriller': [
-      {
-        title: "Parasite",
-        year: "2019",
-        rating: "8.5/10",
-        description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-        whyUserMightLikeIt: `${userName}, this Oscar-winning thriller masterfully blends social commentary with unpredictable plot twists. Director Bong Joon-ho creates perfect tension as the story shifts between darkly funny and deeply unsettling.`,
-        platforms: ["Hulu", "Prime Video"]
-      },
-      {
-        title: "The Silence of the Lambs",
-        year: "1991",
-        rating: "8.6/10",
-        description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
-        whyUserMightLikeIt: `Jonathan Demme's chilling thriller features unforgettable performances from Jodie Foster and Anthony Hopkins. ${userName}, if you appreciate suspenseful storytelling and complex characters, this film is a must-see.`,
-        platforms: ["HBO Max", "Paramount+"]
-      },
       {
         title: "Se7en",
         year: "1995",
@@ -385,19 +294,10 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
     ]
   };
 
-  // If no genre match, return empty array
-  if (!allMockMovies[genre]) {
-    return [];
-  }
+  // Filter out previously recommended movies
+  const availableMovies = allMockMovies[genre as keyof typeof allMockMovies] || [];
+  const newMovies = availableMovies.filter(movie => !previousMovies.includes(movie.title));
   
-  // If there are previous movies, filter them out to avoid duplicates
-  let availableMovies = allMockMovies[genre];
-  if (previousMovies.length > 0) {
-    availableMovies = availableMovies.filter(movie => 
-      !previousMovies.includes(movie.title)
-    );
-  }
-  
-  // Return 5 movies or fewer if there aren't enough left
-  return availableMovies.slice(0, 5);
+  // Return 5 random movies from the available ones
+  return newMovies.sort(() => Math.random() - 0.5).slice(0, 5);
 }
