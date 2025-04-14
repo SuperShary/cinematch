@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 // Use the provided API key
@@ -535,5 +536,73 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         year: "2017",
         rating: "7.8/10",
         description: "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
-        why
+        whyUserMightLikeIt: `Jordan Peele's groundbreaking social thriller combines genuine scares with incisive commentary. ${userName}, the film's perfect balance of tension, horror, and dark humor creates an unforgettable viewing experience.`
+      },
+      {
+        title: "The Shining",
+        year: "1980",
+        rating: "8.4/10",
+        description: "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+        whyUserMightLikeIt: `Stanley Kubrick's masterpiece of psychological horror features iconic performances and visually stunning sequences. ${userName}, the film's deliberate pacing and mounting dread create an atmosphere of inescapable terror.`
+      },
+      {
+        title: "It Follows",
+        year: "2014",
+        rating: "6.8/10",
+        description: "A young woman is followed by an unknown supernatural force after a sexual encounter.",
+        whyUserMightLikeIt: `This innovative horror film creates terror through its relentless, slow-moving threat and haunting synth score. ${userName}, if you appreciate horror that builds genuine dread rather than relying on jump scares, this film's unique premise will stay with you.`
+      },
+      {
+        title: "The Babadook",
+        year: "2014",
+        rating: "6.8/10",
+        description: "A single mother and her child fall into a deep well of paranoia when an eerie children's book titled 'Mister Babadook' manifests in their home.",
+        whyUserMightLikeIt: `This Australian horror film uses its monster as a brilliant metaphor for grief and depression. ${userName}, the powerful central performance and psychological depth elevate this beyond typical monster movies.`
+      },
+      {
+        title: "A Quiet Place",
+        year: "2018",
+        rating: "7.5/10",
+        description: "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
+        whyUserMightLikeIt: `This innovative thriller creates unbearable tension through its sound design and premise. ${userName}, the film's focus on family dynamics amidst horror elements adds emotional depth to the scares.`
+      },
+      {
+        title: "The Descent",
+        year: "2005",
+        rating: "7.2/10",
+        description: "A caving expedition goes horribly wrong, as the explorers become trapped and ultimately pursued by a strange breed of predators.",
+        whyUserMightLikeIt: `This claustrophobic horror film builds tension even before the monsters appear. ${userName}, if you're afraid of tight spaces, this film's cave setting alone will terrify you before the creatures even show up.`
+      },
+      {
+        title: "Midsommar",
+        year: "2019",
+        rating: "7.1/10",
+        description: "A couple travels to Northern Europe to visit a rural hometown's fabled Swedish mid-summer festival. What begins as an idyllic retreat quickly devolves into an increasingly violent and bizarre competition at the hands of a pagan cult.",
+        whyUserMightLikeIt: `Ari Aster's folk horror occurs almost entirely in bright daylight, subverting traditional horror tropes. ${userName}, the film's stunning visuals and examination of toxic relationships create a uniquely disturbing experience.`
+      },
+      {
+        title: "Let the Right One In",
+        year: "2008",
+        rating: "7.9/10",
+        description: "Oskar, a bullied 12-year-old, befriends Eli, a peculiar girl who only appears at night and is revealed to be a vampire.",
+        whyUserMightLikeIt: `This Swedish vampire film blends horror with a touching coming-of-age story. ${userName}, the film's chilly atmosphere and unique perspective make it an unforgettable entry in vampire cinema.`
       }
+    ]
+  };
+
+  // If no genre match, return empty array
+  if (!allMockMovies[genre]) {
+    return [];
+  }
+  
+  // If there are previous movies, filter them out to avoid duplicates
+  let availableMovies = allMockMovies[genre];
+  if (previousMovies.length > 0) {
+    availableMovies = availableMovies.filter(movie => 
+      !previousMovies.includes(movie.title)
+    );
+  }
+  
+  // Return 5 movies or fewer if there aren't enough left
+  return availableMovies.slice(0, 5);
+}
