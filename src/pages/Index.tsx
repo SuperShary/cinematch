@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
 import Header from '@/components/Header';
@@ -60,15 +61,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen pb-12">
+    <div className="min-h-screen pb-12 bg-gradient-to-b from-black to-gray-900">
       <Header />
       
       <main className="container px-4 mx-auto mt-6">
         <div className="max-w-lg mx-auto text-center mb-8">
           {movies.length === 0 ? (
             <>
-              <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Discover Your Next Favorite Movie
+              <h1 className="text-4xl font-bold mb-4 text-white">
+                Discover Your <span className="text-red-600">Next</span> Favorite Movie
               </h1>
               <p className="text-gray-300 mb-8">
                 Tell us your name and preferred genre, and we'll recommend movies tailored just for you.
@@ -76,8 +77,8 @@ const Index = () => {
             </>
           ) : userName && (
             <p className="text-xl text-gray-200 mb-8 animate-fade-in">
-              Hi <span className="text-neon-purple font-semibold">{userName}</span>! 
-              {movies.length > 0 ? " Here are your recommendations." : " What kind of movies are you in the mood for today?"}
+              Hi <span className="text-red-600 font-semibold">{userName}</span>! 
+              {movies.length > 0 ? " Here are your personalized recommendations." : " What kind of movies are you in the mood for today?"}
             </p>
           )}
         </div>
