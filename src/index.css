@@ -34,6 +34,11 @@
     --ring: 252 71% 83.9%;
 
     --radius: 0.75rem;
+    
+    /* Netflix themed colors */
+    --netflix-red: 357 92% 47%;
+    --netflix-black: 0 0% 8%;
+    --netflix-dark-gray: 0 0% 15%;
   }
 }
 
@@ -44,22 +49,22 @@
   
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
-    background-image: radial-gradient(
-      circle at 50% 50%,
-      hsl(var(--background)) 0%,
-      hsl(222, 47%, 9%) 100%
-    );
+    background-image: linear-gradient(to bottom, #000000, #141414);
     background-attachment: fixed;
   }
 
   html {
     @apply scroll-smooth;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
 }
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-xl bg-card/60 border border-white/10 shadow-[0_4px_15px_-2px_rgba(0,0,0,0.4)];
+    @apply backdrop-blur-xl bg-black/60 border border-white/10 shadow-[0_4px_15px_-2px_rgba(0,0,0,0.4)];
   }
   
   .neo-blur {
@@ -73,4 +78,45 @@
   .neon-border {
     box-shadow: 0 0 5px theme('colors.neon.purple'), 0 0 10px theme('colors.neon.glow');
   }
+  
+  /* Netflix-themed components */
+  .netflix-card {
+    @apply bg-gray-900/90 hover:bg-gray-800/90 border-none rounded-md overflow-hidden transition-all duration-300;
+  }
+  
+  .netflix-gradient {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  }
+  
+  .netflix-button {
+    @apply bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition-colors;
+  }
+  
+  .pulse-hover {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }

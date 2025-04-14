@@ -1,13 +1,6 @@
 
 import { Movie } from '@/components/MovieCard';
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
-
-declare module 'jspdf' {
-  interface jsPDF {
-    autoTable: (options: any) => jsPDF;
-  }
-}
 
 export const createPdf = async (movies: Movie[], userName: string, genre: string) => {
   try {
@@ -15,7 +8,7 @@ export const createPdf = async (movies: Movie[], userName: string, genre: string
     
     // Add title
     doc.setFontSize(20);
-    doc.setTextColor(128, 0, 128); // Purple color
+    doc.setTextColor(220, 38, 38); // Red color (Netflix theme)
     doc.text(`Movie Recommendations for ${userName}`, 20, 20);
     doc.setFontSize(16);
     doc.text(`Genre: ${genre}`, 20, 30);
@@ -39,6 +32,14 @@ export const createPdf = async (movies: Movie[], userName: string, genre: string
       doc.setFont(undefined, 'bold');
       doc.text(`${movieNumber}. ${movie.title} (${movie.year}) - ${movie.rating}`, 20, yPosition);
       yPosition += 7;
+      
+      // Platforms
+      if (movie.platforms && movie.platforms.length > 0) {
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'italic');
+        doc.text(`Available on: ${movie.platforms.join(', ')}`, 20, yPosition);
+        yPosition += 5;
+      }
       
       // Description
       doc.setFontSize(12);
