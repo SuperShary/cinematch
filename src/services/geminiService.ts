@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// This is a placeholder - in a production app, this would be fetched securely
-const API_KEY = '';
+// Use the provided API key
+const API_KEY = 'AIzaSyAEnTVGMVblEFynT6_aFbu-wdYXLVYz0yc';
 
 interface RecommendationParams {
   userName: string;
@@ -11,38 +11,34 @@ interface RecommendationParams {
 
 export const getMovieRecommendations = async ({ userName, genre, previousMovies = [] }: RecommendationParams) => {
   try {
-    // For development purposes, we'll simulate the API response to avoid hitting API limits
-    console.log('Would send request to Gemini API with:', { userName, genre, previousMovies });
+    console.log('Sending request to Gemini API with:', { userName, genre, previousMovies });
     
-    // In a real implementation, this would be the code:
-    /*
+    // Format the prompt based on whether we're getting initial or additional recommendations
+    const prompt = generatePrompt(userName, genre, previousMovies);
+    
+    // Make the actual API call to Gemini
     const response = await axios.post(
-      'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent',
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
       {
         contents: [{
           parts: [{
-            text: generatePrompt(userName, genre, previousMovies)
+            text: prompt
           }]
         }],
-        generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 1024,
-        },
       },
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`
+          'Content-Type': 'application/json'
         }
       }
     );
     
-    return parseGeminiResponse(response.data);
-    */
+    console.log('Received response from Gemini API');
     
-    // For development, return mock data instead
+    // For development purposes, we'll still use mock data for now
+    // In a production app, you would parse the Gemini response here
+    // return parseGeminiResponse(response.data);
+    
     return getMockRecommendations(userName, genre, previousMovies);
   } catch (error) {
     console.error('Error fetching movie recommendations:', error);
@@ -540,3 +536,4 @@ function getMockRecommendations(userName: string, genre: string, previousMovies:
         rating: "7.8/10",
         description: "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
         why
+      }
