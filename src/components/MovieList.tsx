@@ -1,10 +1,10 @@
-
 import React from 'react';
 import MovieCard, { Movie } from './MovieCard';
 import { Button } from "@/components/ui/button";
 import { FileDown, Plus, RefreshCw } from 'lucide-react';
 import { createPdf } from '@/utils/pdfUtils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Movie as GeminiMovie } from '../services/geminiService';
 
 interface MovieListProps {
   movies: Movie[];
@@ -12,6 +12,7 @@ interface MovieListProps {
   genre: string;
   onShowMore: () => void;
   isLoadingMore: boolean;
+  hasMore: boolean;
 }
 
 const MovieList: React.FC<MovieListProps> = ({ 
@@ -19,13 +20,27 @@ const MovieList: React.FC<MovieListProps> = ({
   userName, 
   genre, 
   onShowMore, 
-  isLoadingMore 
+  isLoadingMore,
+  hasMore
 }) => {
   const isMobile = useIsMobile();
   
   const handleExportPdf = async () => {
     await createPdf(movies, userName, genre);
   };
+
+  // Calculate total running time for the genre
+  const totalRunningTime = movies.reduce((total, movie) => {
+    if (movie.runningTime) {
+      const [hours, minutes] = movie.runningTime.split('h ');
+      const mins = minutes ? parseInt(minutes.replace('m', '')) : 0;
+      return total + (parseInt(hours) * 60 + mins);
+    }
+    return total;
+  }, 0);
+
+  const hours = Math.floor(totalRunningTime / 60);
+  const minutes = totalRunningTime % 60;
 
   if (!movies.length) return null;
 
@@ -51,32 +66,40 @@ const MovieList: React.FC<MovieListProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-        {movies.map((movie, index) => (
-          <MovieCard key={`${movie.title}-${index}`} movie={movie} />
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold text-white">{genre} Movies</h2>
+        <div className="text-gray-400">
+          Total Runtime: {hours}h {minutes}m
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {movies.map((movie) => (
+          <MovieCard key={movie.title} movie={movie} />
         ))}
       </div>
 
-      <div className="flex justify-center mt-8 mb-12">
-        <Button 
-          onClick={onShowMore}
-          disabled={isLoadingMore}
-          className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-[0_0_15px_rgba(220,38,38,0.6)] transition-all duration-300 text-white px-6"
-          size={isMobile ? "default" : "lg"}
-        >
-          {isLoadingMore ? (
-            <span className="flex items-center">
-              <RefreshCw className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
-              {isMobile ? "Loading..." : "Loading More..."}
-            </span>
-          ) : (
-            <>
-              <Plus className="mr-2 h-4 w-4" />
-              {isMobile ? "Show More" : "Show More Recommendations"}
-            </>
-          )}
-        </Button>
-      </div>
+      {hasMore && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={onShowMore}
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition-colors"
+            disabled={isLoadingMore}
+          >
+            {isLoadingMore ? (
+              <>
+                <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              <>
+                <Plus className="mr-2 h-4 w-4" />
+                Show More
+              </>
+            )}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

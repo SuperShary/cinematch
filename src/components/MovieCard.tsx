@@ -9,6 +9,8 @@ export interface Movie {
   whyUserMightLikeIt: string;
   platforms?: string[]; // Add platforms property
   logoUrl?: string; // Add logoUrl property
+  releaseDate?: string;
+  runningTime?: string;
 }
 
 interface MovieCardProps {
@@ -63,28 +65,47 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       </div>
 
       <div className="p-5 flex-1 flex flex-col">
-        <div className="mb-2 flex items-center text-gray-400">
-          <span className="mr-2">{movie.year}</span>
+        <div className="mb-2 flex flex-wrap items-center text-gray-400 gap-2">
+          <div className="flex items-center">
+            <span className="text-sm font-medium">Year:</span>
+            <span className="ml-1">{movie.year}</span>
+          </div>
+          {movie.releaseDate && (
+            <div className="flex items-center">
+              <span className="text-gray-500 mx-1">•</span>
+              <span className="text-sm font-medium">Released:</span>
+              <span className="ml-1">{new Date(movie.releaseDate).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</span>
+            </div>
+          )}
+          {movie.runningTime && (
+            <div className="flex items-center">
+              <span className="text-gray-500 mx-1">•</span>
+              <span className="text-sm font-medium">Runtime:</span>
+              <span className="ml-1">{movie.runningTime}</span>
+            </div>
+          )}
           {movie.platforms && movie.platforms.length > 0 && (
-            <>
-              <span className="mx-2 text-gray-500">•</span>
-              <div className="flex items-center">
-                <span className="text-sm">Available on: </span>
-                <div className="ml-1 flex gap-1">
-                  {movie.platforms.map((platform, index) => (
-                    <a
-                      key={index}
-                      href={getPlatformUrl(platform)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium px-2 py-0.5 rounded-full bg-neon-purple/20 text-neon-purple hover:bg-neon-purple/30 transition-colors"
-                    >
-                      {platform}
-                    </a>
-                  ))}
-                </div>
+            <div className="flex items-center">
+              <span className="text-gray-500 mx-1">•</span>
+              <span className="text-sm font-medium">Available on:</span>
+              <div className="ml-1 flex gap-1">
+                {movie.platforms.map((platform, index) => (
+                  <a
+                    key={index}
+                    href={getPlatformUrl(platform)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium px-2 py-0.5 rounded-full bg-neon-purple/20 text-neon-purple hover:bg-neon-purple/30 transition-colors"
+                  >
+                    {platform}
+                  </a>
+                ))}
               </div>
-            </>
+            </div>
           )}
         </div>
         
